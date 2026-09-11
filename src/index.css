@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@layer base {
+  *,
+  *::before,
+  *::after,
+  html,
+  body,
+  button,
+  input,
+  textarea,
+  select,
+  h1, h2, h3, h4, h5, h6,
+  p, span, div, a, li,
+  code, pre, .font-mono {
+    font-family: Arial, Helvetica, sans-serif !important;
+  }
+
+  body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Formal subtle grid pattern for corporate presentation */
+.bg-formal-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+/* Professional card UI/UX classes */
+.card-hover {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.22s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
+  border-color: #cbd5e1;
+}
+
+.btn-hover {
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-hover:active {
+  transform: scale(0.99);
+}
+
+/* Clean formal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print styling for resume */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, nav, footer, .no-print {
+    display: none !important;
+  }
+}
