@@ -3,21 +3,17 @@
 @layer base {
   *,
   *::before,
-  *::after,
-  html,
-  body,
-  button,
-  input,
-  textarea,
-  select,
-  h1, h2, h3, h4, h5, h6,
-  p, span, div, a, li,
-  code, pre, .font-mono {
-    font-family: Arial, Helvetica, sans-serif !important;
+  *::after {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
   }
 
   body {
-    background-color: #f8fafc;
+    background-color: #ffffff;
     color: #0f172a;
     overflow-x: hidden;
     line-height: 1.6;
@@ -26,52 +22,114 @@
   }
 }
 
-/* Formal subtle grid pattern for corporate presentation */
-.bg-formal-grid {
-  background-size: 32px 32px;
+/* Subtle dot / grid pattern matching the Figma design */
+.bg-figma-grid {
+  background-size: 36px 36px;
   background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    radial-gradient(rgba(148, 163, 184, 0.15) 1px, transparent 1px);
 }
 
-/* Professional card UI/UX classes */
+/* Figma-inspired pastel cards */
+.pastel-card-mint {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.pastel-card-mint:hover {
+  border-color: #86efac;
+  box-shadow: 0 12px 28px -8px rgba(16, 185, 129, 0.15);
+}
+
+.pastel-card-purple {
+  background-color: #f5f3ff;
+  border-color: #ddd6fe;
+}
+.pastel-card-purple:hover {
+  border-color: #c4b5fd;
+  box-shadow: 0 12px 28px -8px rgba(139, 92, 246, 0.15);
+}
+
+.pastel-card-amber {
+  background-color: #fffbeb;
+  border-color: #fde68a;
+}
+.pastel-card-amber:hover {
+  border-color: #fcd34d;
+  box-shadow: 0 12px 28px -8px rgba(245, 158, 11, 0.15);
+}
+
+.pastel-card-pink {
+  background-color: #fff1f2;
+  border-color: #fecdd3;
+}
+.pastel-card-pink:hover {
+  border-color: #fda4af;
+  box-shadow: 0 12px 28px -8px rgba(244, 63, 94, 0.15);
+}
+
+/* Interactive Card Hover */
 .card-hover {
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.22s ease-in-out;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.2s ease-in-out;
 }
 
 .card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
-  border-color: #cbd5e1;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -10px rgba(15, 23, 42, 0.08);
 }
 
 .btn-hover {
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-hover:active {
-  transform: scale(0.99);
+  transform: scale(0.98);
 }
 
 /* Clean formal scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f8fafc;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
-  border-radius: 4px;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+/* Floating animation keyframes for geometric shapes */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-3deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 7s ease-in-out infinite;
 }
 
 /* Print styling for resume */
@@ -84,3 +142,25 @@
     display: none !important;
   }
 }
+
+/* 3D Flip Card Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+

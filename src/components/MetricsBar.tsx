@@ -1,61 +1,78 @@
 import React from 'react';
-import { Zap, Workflow, ShieldCheck, CheckCircle2, TrendingUp } from 'lucide-react';
+import { motion } from 'motion/react';
 import { METRICS } from '../data/portfolioData';
+import { Briefcase, ShieldCheck, CheckCircle2, Zap, Activity, Cpu } from 'lucide-react';
 
 export const MetricsBar: React.FC = () => {
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Zap':
-        return <Zap className="w-5 h-5 text-amber-600" />;
-      case 'Bot':
-      case 'Workflow':
-        return <Workflow className="w-5 h-5 text-blue-600" />;
-      case 'ShieldCheck':
-        return <ShieldCheck className="w-5 h-5 text-emerald-600" />;
-      case 'CheckCircle2':
-        return <CheckCircle2 className="w-5 h-5 text-indigo-600" />;
+  const getMetricIcon = (iconName: string, idx: number) => {
+    switch (idx) {
+      case 0:
+        return <Briefcase className="w-5 h-5 text-violet-600" />;
+      case 1:
+        return <Cpu className="w-5 h-5 text-blue-600" />;
+      case 2:
+        return <CheckCircle2 className="w-5 h-5 text-emerald-600" />;
+      case 3:
+        return <Zap className="w-5 h-5 text-amber-500" />;
       default:
-        return <TrendingUp className="w-5 h-5 text-slate-600" />;
+        return <Activity className="w-5 h-5 text-violet-600" />;
     }
   };
 
   return (
-    <section id="metrics" className="py-8 bg-slate-50 border-b border-slate-200">
+    <section id="metrics" className="py-8 sm:py-10 bg-slate-50/80 border-y border-slate-200/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-200">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-600">
-            <TrendingUp className="w-4 h-4 text-blue-600" />
-            <span>Key Engineering Metrics & Quantified Production Impact</span>
+        {/* Real-time Telemetry Indicator Banner */}
+        <div className="flex items-center justify-between flex-wrap gap-2 mb-6 pb-4 border-b border-slate-200/60 text-xs">
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            <span className="font-bold text-slate-900">Real-Time Production Telemetry</span>
+            <span className="text-slate-400">•</span>
+            <span className="text-slate-500 hidden sm:inline">Tata Consultancy Services (TCS) &amp; Open Source</span>
           </div>
-          <span className="text-xs text-slate-500 font-medium">
-            Production Validated
-          </span>
+
+          <div className="flex items-center gap-1.5 text-slate-500 text-[11px] font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span>SLA Uptime: 99.9%</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {METRICS.map((metric, idx) => (
-            <div
+        {/* Horizontal 4-Stat Metrics Row with Icons and Valid Enterprise Numbers */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          {METRICS.map((item, idx) => (
+            <motion.div
               key={idx}
-              className="card-hover p-5 rounded-xl bg-white border border-slate-200/90 shadow-2xs group flex flex-col justify-between"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-xs hover:border-slate-300 transition-all flex flex-col justify-between"
             >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="p-2 rounded-lg bg-slate-100 border border-slate-200 group-hover:bg-blue-50 group-hover:border-blue-200 group-hover:scale-105 transition-all duration-200">
-                    {getIcon(metric.iconName)}
-                  </div>
-                  <span className="text-3xl font-extrabold text-slate-900 tracking-tight group-hover:text-blue-700 transition-colors">
-                    {metric.value}
-                  </span>
+              <div className="flex items-center justify-between mb-3">
+                <div className="p-2 rounded-xl bg-slate-50 border border-slate-100">
+                  {getMetricIcon(item.iconName, idx)}
                 </div>
-                <h4 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-slate-950 transition-colors">
-                  {metric.label}
-                </h4>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Metric #{idx + 1}
+                </span>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed mt-2 pt-2 border-t border-slate-100">
-                {metric.subtext}
-              </p>
-            </div>
+
+              <div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight font-display mb-0.5">
+                  {item.value}
+                </div>
+                <div className="text-xs sm:text-sm font-bold text-slate-800 font-display">
+                  {item.label}
+                </div>
+                <div className="text-[11px] text-slate-500 mt-1 leading-snug">
+                  {item.subtext}
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
 

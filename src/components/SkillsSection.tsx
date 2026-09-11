@@ -15,6 +15,7 @@ import {
   FileCheck
 } from 'lucide-react';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
+import { SafeImage } from './SafeImage';
 
 export const SkillsSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -92,7 +93,7 @@ export const SkillsSection: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 text-blue-700 text-xs font-bold tracking-wider uppercase mb-1.5">
               <Workflow className="w-4 h-4" />
-              <span>Technical Arsenal &amp; Verified Competencies</span>
+              <span>Technical Arsenal &amp; Core Competencies</span>
             </div>
             <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
               Engineering Domain Competencies
@@ -178,49 +179,76 @@ export const SkillsSection: React.FC = () => {
             return (
               <div
                 key={cat!.id}
-                className="p-6 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col justify-between hover:border-slate-300 transition-colors"
+                className="rounded-xl bg-white border border-slate-200/90 shadow-2xs flex flex-col justify-between hover:border-slate-300 transition-colors overflow-hidden"
               >
-                <div>
-                  {/* Card Header & Per-Card Mode Tab */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-4 border-b border-slate-200">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2.5 rounded-lg bg-slate-100 border border-slate-200 text-slate-800">
-                        {getCategoryIcon(cat!.iconName)}
-                      </div>
-                      <div>
-                        <h3 className="text-base font-bold text-slate-900 tracking-tight">
+                {/* Impressive Domain Visual Banner Header */}
+                {cat!.bannerUrl && (
+                  <div className="relative h-24 sm:h-28 w-full overflow-hidden bg-slate-900 border-b border-slate-100">
+                    <SafeImage
+                      src={cat!.bannerUrl}
+                      alt={cat!.name}
+                      categoryBadge={cat!.name}
+                      className="w-full h-full object-cover opacity-80 hover:opacity-95 hover:scale-105 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-transparent pointer-events-none" />
+                    <div className="absolute bottom-2.5 left-4 right-4 flex items-center justify-between z-10">
+                      <div className="flex items-center gap-2">
+                        <div className="p-1.5 rounded-md bg-white/20 backdrop-blur-md border border-white/20 text-white">
+                          {getCategoryIcon(cat!.iconName)}
+                        </div>
+                        <span className="text-white font-bold text-xs tracking-wide">
                           {cat!.name}
-                        </h3>
-                        <p className="text-xs text-slate-500">
-                          {cat!.description}
-                        </p>
+                        </span>
                       </div>
-                    </div>
-
-                    {/* View Switcher for this Card */}
-                    <div className="inline-flex rounded-md border border-slate-200 bg-slate-100 p-0.5 shrink-0 self-start sm:self-auto">
-                      <button
-                        onClick={() => toggleCardMode(cat!.id)}
-                        className={`px-2.5 py-1 rounded text-xs font-semibold transition-colors cursor-pointer ${
-                          currentMode === 'skills'
-                            ? 'bg-white text-blue-700 shadow-2xs font-bold'
-                            : 'text-slate-600 hover:text-slate-900'
-                        }`}
-                      >
-                        Skills ({cat!.skills.length})
-                      </button>
-                      <button
-                        onClick={() => toggleCardMode(cat!.id)}
-                        className={`px-2.5 py-1 rounded text-xs font-semibold transition-colors cursor-pointer ${
-                          currentMode === 'architecture'
-                            ? 'bg-white text-blue-700 shadow-2xs font-bold'
-                            : 'text-slate-600 hover:text-slate-900'
-                        }`}
-                      >
-                        Architecture
-                      </button>
+                      <span className="text-[10px] font-mono font-medium text-slate-300 bg-black/40 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/10">
+                        {cat!.proficiencyScore || 'Enterprise Grade'}
+                      </span>
                     </div>
                   </div>
+                )}
+
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    {/* Card Header & Per-Card Mode Tab */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-4 border-b border-slate-200">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2.5 rounded-lg bg-slate-100 border border-slate-200 text-slate-800">
+                          {getCategoryIcon(cat!.iconName)}
+                        </div>
+                        <div>
+                          <h3 className="text-base font-bold text-slate-900 tracking-tight">
+                            {cat!.name}
+                          </h3>
+                          <p className="text-xs text-slate-500">
+                            {cat!.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* View Switcher for this Card */}
+                      <div className="inline-flex rounded-md border border-slate-200 bg-slate-100 p-0.5 shrink-0 self-start sm:self-auto">
+                        <button
+                          onClick={() => toggleCardMode(cat!.id)}
+                          className={`px-2.5 py-1 rounded text-xs font-semibold transition-colors cursor-pointer ${
+                            currentMode === 'skills'
+                              ? 'bg-white text-blue-700 shadow-2xs font-bold'
+                              : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          Skills ({cat!.skills.length})
+                        </button>
+                        <button
+                          onClick={() => toggleCardMode(cat!.id)}
+                          className={`px-2.5 py-1 rounded text-xs font-semibold transition-colors cursor-pointer ${
+                            currentMode === 'architecture'
+                              ? 'bg-white text-blue-700 shadow-2xs font-bold'
+                              : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          Architecture
+                        </button>
+                      </div>
+                    </div>
 
                   {/* Mode 1: Skills Matrix */}
                   {currentMode === 'skills' ? (
@@ -305,6 +333,7 @@ export const SkillsSection: React.FC = () => {
                   </button>
                 </div>
               </div>
+            </div>
             );
           })}
         </div>

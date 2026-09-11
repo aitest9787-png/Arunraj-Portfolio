@@ -18,15 +18,17 @@ export const RecruiterDrawer: React.FC<RecruiterDrawerProps> = ({
   if (!isOpen) return null;
 
   const recruiterSummaryText = `Candidate: Arunraj S
-Current: AI Automation Developer at Tata Consultancy Services (TCS), Chennai
-Target Roles: AI Engineer | RAG Engineer | AI Automation Engineer
-Key Technologies: LangGraph, LangChain, FAISS, ChromaDB, Groq, Pydantic, FastAPI, ServiceNow API, Ansible, Linux, Docker, Python
+Current: AI Automation & DevOps Engineer at Tata Consultancy Services (TCS), Chennai
+Experience: 2 Years Enterprise Production Systems (Jul 2024 - Present)
+Target Roles: AI Engineer | DevOps Engineer (Ansible/AWX) | AI Automation Engineer
+Key Technologies: LangGraph, LangChain, FAISS, ChromaDB, Ansible, AWX, Python, ServiceNow ITSM REST, Linux, Docker, FastAPI
 Impact Highlights:
+- AWX Automation: Provisioned & automated AWX clusters with modular Ansible playbooks, managing RBAC and vault credentials.
+- ITSM-to-Server Self-Healing: Built Python middleware polling ServiceNow incident tickets to trigger Ansible AWX self-healing playbooks.
 - Built LangGraph multi-agent systems with Human-in-the-Loop (HITL) approval nodes & sub-second Groq inference.
 - Engineered self-correcting RAG with dedicated hallucination validation agents & live Tavily/Arxiv search fallback.
 - Shipped ML-driven anomaly detection (Random Forest/Isolation Forest) + automatic ServiceNow incident ticketing.
-- Reduced Linux server patching deployment times by 60% via Ansible.
-- Containerized workflows with Docker, CI/CD GitHub Actions, and 18 automated test suites.
+- Reduced Linux server patching deployment times by 60% via Ansible playbooks.
 Contact: arunrajselvarasu@gmail.com | +91-8870127848 | linkedin.com/in/arunraj-s-7a3a12202`;
 
   const handleCopySummary = () => {

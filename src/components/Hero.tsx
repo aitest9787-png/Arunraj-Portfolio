@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
-  ArrowRight, 
   Sparkles, 
-  Github, 
-  Linkedin, 
   Mail, 
-  Phone,
+  MapPin, 
+  Send, 
   FileText, 
   CheckCircle2, 
-  Layers, 
-  Workflow, 
-  Cpu, 
-  ShieldCheck,
+  ExternalLink,
+  Terminal,
+  Cpu,
+  Linkedin,
+  Github,
   Building2,
-  MapPin,
-  Play
+  Activity,
+  BadgeCheck
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { PERSONAL_INFO } from '../data/portfolioData';
@@ -23,237 +22,294 @@ import profilePhoto from '../assets/images/arunraj_profile_photo_1789060913335.j
 interface HeroProps {
   onOpenRecruiterDrawer: () => void;
   onOpenResumeModal: () => void;
-  onPlayIntro?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer, onOpenResumeModal, onPlayIntro }) => {
+export const Hero: React.FC<HeroProps> = ({ 
+  onOpenRecruiterDrawer, 
+  onOpenResumeModal,
+}) => {
   const [imgSrc, setImgSrc] = useState(profilePhoto);
 
-  const handleImageError = () => {
-    // If imported asset fails, fallback to public path
-    if (imgSrc !== '/profile.jpg') {
-      setImgSrc('/profile.jpg');
-    }
-  };
-
   return (
-    <section id="overview" className="relative pt-16 pb-12 lg:pt-22 lg:pb-20 bg-white border-b border-slate-200">
-      {/* Formal subtle background grid */}
-      <div className="absolute inset-0 bg-formal-grid opacity-70 pointer-events-none" />
+    <section id="overview" className="relative pt-8 pb-16 lg:pt-12 lg:pb-20 overflow-hidden bg-white">
+      
+      {/* Decorative Floating Colorful Spheres */}
+      {/* 1. Purple Sphere (Top Left) */}
+      <motion.div
+        animate={{ y: [-6, 8, -6], x: [-3, 3, -3] }}
+        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute left-[8%] sm:left-[14%] top-16 sm:top-24 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-[#8B5CF6] shadow-md shadow-purple-500/30 z-10 pointer-events-none"
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center">
-          
-          {/* Left Column: Formal Executive Introduction (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
-            
-            {/* Top Corporate Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-300 text-slate-800 text-xs font-semibold mb-5 shadow-2xs">
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-600" />
-              <span className="font-bold text-slate-900">Tata Consultancy Services (TCS)</span>
-              <span className="text-slate-400">•</span>
-              <span className="text-slate-600 font-normal">AI Automation Developer</span>
+      {/* 2. Hot Pink Sphere (Top Right) */}
+      <motion.div
+        animate={{ y: [6, -8, 6], x: [2, -3, 2] }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute right-[12%] sm:right-[18%] top-12 sm:top-20 w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-full bg-[#EC4899] shadow-md shadow-pink-500/30 z-10 pointer-events-none"
+      />
+
+      {/* 3. Mint / Teal Sphere (Mid Left) */}
+      <motion.div
+        animate={{ y: [-4, 6, -4] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute left-[4%] sm:left-[8%] top-[45%] w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#10B981] shadow-sm shadow-emerald-500/30 z-10 pointer-events-none"
+      />
+
+      {/* 4. Golden Amber Half-Circle Arc (Right Edge) */}
+      <motion.div
+        animate={{ x: [0, -6, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute -right-6 sm:-right-8 top-[36%] w-16 h-28 sm:w-20 sm:h-36 rounded-l-full bg-[#F59E0B] shadow-lg shadow-amber-500/20 z-10 pointer-events-none"
+      />
+
+      {/* 5. Soft Violet Floating Orb (Lower Right) */}
+      <motion.div
+        animate={{ y: [8, -8, 8] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute right-[16%] bottom-10 w-5 h-5 rounded-full bg-[#6366F1] opacity-70 z-10 pointer-events-none"
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        
+        {/* Top Centered Main Headings */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/90 text-xs font-bold text-emerald-800 shadow-2xs">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <span>Real-Time Status: Active at TCS • Open for Opportunities</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700 shadow-2xs">
+                <Building2 className="w-3.5 h-3.5 text-slate-500" />
+                <span>Tata Consultancy Services (TCS) • Chennai, India</span>
+              </div>
             </div>
-
-            {/* Candidate Name with Motion Entrance */}
-            <motion.h1 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-2.5"
-            >
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight font-display mb-2">
               {PERSONAL_INFO.name}
-            </motion.h1>
-
-            {/* Clear, Authoritative Professional Title */}
-            <div className="mb-4">
-              <div className="text-xl sm:text-2xl font-bold text-blue-700">
-                AI Automation Developer &amp; Agentic Systems Engineer
-              </div>
-              <div className="text-xs sm:text-sm font-semibold text-slate-500 mt-1">
-                LangGraph Multi-Agent Workflows • Production RAG Pipelines • Enterprise Linux &amp; Ansible Automation
-              </div>
-            </div>
-
-            {/* Executive Bio Paragraph */}
-            <p className="text-base sm:text-lg text-slate-700 leading-relaxed max-w-2xl mb-5">
-              AI Automation Developer specializing in autonomous <strong className="text-slate-900 font-semibold">LangGraph multi-agent architectures</strong>, self-correcting <strong className="text-slate-900 font-semibold">Agentic RAG pipelines</strong>, and enterprise automation. Proven track record at TCS delivering predictive machine learning incident ticketing (Random Forest / Isolation Forest) and infrastructure orchestration that slashed server patching cycles by <strong className="text-slate-900 font-semibold">60%</strong>.
+            </h1>
+            <p className="text-lg sm:text-xl font-medium text-slate-700 font-display">
+              AI Engineer &amp; RAG Systems Specialist
             </p>
+            <p className="text-xs sm:text-sm font-medium text-slate-500 mt-1 flex items-center justify-center gap-3 flex-wrap">
+              <span className="text-violet-700 font-semibold flex items-center gap-1">
+                <Cpu className="w-3.5 h-3.5" />
+                LangGraph &amp; Multi-Agent Systems
+              </span>
+              <span>•</span>
+              <span className="text-blue-700 font-semibold flex items-center gap-1">
+                <Terminal className="w-3.5 h-3.5" />
+                Ansible &amp; AWX Orchestration
+              </span>
+              <span>•</span>
+              <span className="text-emerald-700 font-semibold">ServiceNow Self-Healing ITSM</span>
+              <span>•</span>
+              <span className="text-slate-700 font-semibold">Enterprise RAG &amp; Vector DBs</span>
+            </p>
+          </motion.div>
+        </div>
 
-            {/* Formal Competency Tags */}
-            <div className="flex flex-wrap items-center gap-2 mb-7">
-              <span className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-800 text-xs font-medium flex items-center gap-1.5">
-                <Workflow className="w-3.5 h-3.5 text-blue-600" /> LangGraph Multi-Agent
+        {/* 3-Column Core Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center mb-16">
+          
+          {/* Left Column: Biography, Contact, Core Engineering Focus (3 cols) */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:col-span-3 space-y-6 text-left order-2 lg:order-1"
+          >
+            {/* Biography */}
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                Professional Profile
               </span>
-              <span className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-800 text-xs font-medium flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-indigo-600" /> FAISS / ChromaDB RAG
-              </span>
-              <span className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-800 text-xs font-medium flex items-center gap-1.5">
-                <Cpu className="w-3.5 h-3.5 text-slate-700" /> Groq Sub-Second Inference
-              </span>
-              <span className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-800 text-xs font-medium flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" /> ServiceNow &amp; Ansible
-              </span>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                AI Automation &amp; DevOps Engineer at TCS specializing in LangGraph multi-agent orchestration, self-correcting RAG pipelines, AWX cluster provisioning, and autonomous ITSM self-healing.
+              </p>
             </div>
 
-            {/* Formal Action CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto mb-7">
-              <button
-                id="hero-view-resume-btn"
-                onClick={onOpenResumeModal}
-                className="btn-hover flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm shadow-sm cursor-pointer"
-              >
-                <FileText className="w-4 h-4" />
-                <span>View Official Resume</span>
-              </button>
+            {/* Core Tech Specialties */}
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1.5">
+                Core Engineering Focus
+              </span>
+              <div className="space-y-2">
+                <div className="p-2.5 rounded-lg bg-blue-50/70 border border-blue-100 text-xs text-blue-900">
+                  <div className="flex items-center gap-1.5 font-bold mb-0.5">
+                    <Terminal className="w-3.5 h-3.5 text-blue-700" />
+                    <span>Ansible AWX &amp; Self-Healing</span>
+                  </div>
+                  <p className="text-[11px] text-blue-800/80 leading-relaxed">
+                    Automated AWX cluster setup &amp; Python middleware for closed-loop ServiceNow incident resolution.
+                  </p>
+                </div>
 
-              <button
-                id="hero-recruiter-brief-btn"
-                onClick={onOpenRecruiterDrawer}
-                className="btn-hover flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 font-semibold text-xs sm:text-sm shadow-2xs cursor-pointer"
-              >
-                <Sparkles className="w-4 h-4 text-blue-600" />
-                <span>Recruiter 30s Brief</span>
-              </button>
+                <div className="p-2.5 rounded-lg bg-violet-50/70 border border-violet-100 text-xs text-violet-900">
+                  <div className="flex items-center gap-1.5 font-bold mb-0.5">
+                    <Cpu className="w-3.5 h-3.5 text-violet-700" />
+                    <span>LangGraph &amp; Enterprise RAG</span>
+                  </div>
+                  <p className="text-[11px] text-violet-800/80 leading-relaxed">
+                    Multi-agent state machines, Pydantic contracts, hybrid FAISS/Chroma search, and automated validation.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-              {onPlayIntro && (
-                <button
-                  id="hero-play-intro-btn"
-                  onClick={onPlayIntro}
-                  className="btn-hover flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-semibold text-xs sm:text-sm shadow-2xs cursor-pointer"
-                  title="Watch Arunraj animated intro"
-                >
-                  <Play className="w-3.5 h-3.5 text-blue-600 fill-blue-600" />
-                  <span>Play Intro</span>
-                </button>
-              )}
-
-              <a
-                id="hero-explore-projects-btn"
-                href="#projects"
-                className="btn-hover flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-medium text-xs sm:text-sm shadow-2xs group cursor-pointer"
+            {/* Contact Details */}
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                Direct Contact
+              </span>
+              <p className="text-xs sm:text-sm text-slate-700 font-medium">
+                {PERSONAL_INFO.location}
+              </p>
+              <a 
+                href={`mailto:${PERSONAL_INFO.email}`} 
+                className="text-xs sm:text-sm text-blue-600 hover:text-blue-800 transition-colors block truncate font-medium"
               >
-                <span>Enterprise Systems</span>
-                <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:translate-x-1 transition-transform" />
+                {PERSONAL_INFO.email}
               </a>
+              <p className="text-xs sm:text-sm text-slate-600">
+                {PERSONAL_INFO.phone}
+              </p>
             </div>
+          </motion.div>
 
-            {/* Quick Formal Contact Details */}
-            <div className="w-full pt-4 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs text-slate-600">
-              <div className="flex items-center gap-1.5 hover:text-blue-700 transition-colors">
-                <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                <a href={`mailto:${PERSONAL_INFO.email}`} className="text-slate-800 hover:text-blue-700 truncate font-medium">
-                  {PERSONAL_INFO.email}
-                </a>
-              </div>
-              <div className="flex items-center gap-1.5 hover:text-blue-700 transition-colors">
-                <Phone className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                <a href={`tel:${PERSONAL_INFO.phone}`} className="text-slate-800 hover:text-blue-700 font-medium">
-                  {PERSONAL_INFO.phone}
-                </a>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                <span className="text-slate-800 font-medium">{PERSONAL_INFO.location}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <a 
-                  href={PERSONAL_INFO.linkedin} 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="flex items-center gap-1 text-blue-700 hover:text-blue-900 font-semibold transition-colors"
-                >
-                  <Linkedin className="w-3.5 h-3.5" /> LinkedIn
-                </a>
-                <span>•</span>
-                <a 
-                  href={PERSONAL_INFO.github} 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="flex items-center gap-1 text-slate-700 hover:text-slate-900 font-semibold transition-colors"
-                >
-                  <Github className="w-3.5 h-3.5" /> GitHub
-                </a>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right Column: Formal Candidate Profile Portrait (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center">
+          {/* Center Column: Circular Portrait & Centered Headline (6 cols) */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-6 flex flex-col items-center text-center order-1 lg:order-2"
+          >
             
-            {/* Formal Portrait Card with high-end card hover and elevation */}
-            <div className="card-hover w-full max-w-sm bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(15,23,42,0.06)] p-6 flex flex-col items-center text-center group">
-              
-              {/* Profile Image with clean circular frame */}
-              <div className="relative mb-4.5">
-                <div className="w-44 h-44 sm:w-52 sm:h-52 rounded-full p-1.5 bg-white border-2 border-slate-200 shadow-inner overflow-hidden">
+            {/* Circular Profile Avatar with multi-color vibrant ring */}
+            <div className="relative mb-6">
+              {/* Outer decorative gradient ring */}
+              <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full p-1.5 bg-gradient-to-tr from-blue-500 via-indigo-500 via-pink-500 to-amber-400 shadow-xl shadow-slate-900/10 flex items-center justify-center">
+                <div className="w-full h-full rounded-full overflow-hidden bg-white p-1">
                   <img
                     src={imgSrc}
-                    alt="Arunraj S - AI Automation Developer"
+                    onError={() => setImgSrc('/profile.jpg')}
+                    alt={PERSONAL_INFO.name}
                     referrerPolicy="no-referrer"
-                    onError={handleImageError}
-                    className="w-full h-full rounded-full object-cover object-top"
+                    className="w-full h-full object-cover object-top rounded-full"
                   />
                 </div>
-
-                {/* Verified Corporate Status Badge */}
-                <div className="absolute bottom-1.5 right-2 bg-white/95 backdrop-blur-xs border border-slate-200 rounded-full px-2.5 py-0.5 shadow-sm flex items-center gap-1.5 text-[11px] font-semibold text-slate-800">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Verified Profile</span>
-                </div>
               </div>
 
-              {/* Formal Identification Header */}
-              <h2 className="text-xl font-bold text-slate-900 tracking-tight group-hover:text-blue-700 transition-colors">
-                {PERSONAL_INFO.name}
-              </h2>
-              <p className="text-xs font-semibold text-blue-700 mt-0.5">
-                AI Automation Developer
-              </p>
-              <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-0.5">
-                <Building2 className="w-3.5 h-3.5 text-slate-400" />
-                <span>Tata Consultancy Services (TCS)</span>
+              {/* Status pill badge overlapping avatar */}
+              <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-white border border-slate-200 shadow-sm flex items-center gap-1.5 whitespace-nowrap">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[11px] font-bold text-slate-800">TCS AI Systems Engineer</span>
               </div>
-
-              {/* Key Competency Summary Box */}
-              <div className="w-full mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-left text-xs space-y-1.5 group-hover:bg-blue-50/30 transition-colors">
-                <div className="flex items-center justify-between text-slate-500 font-semibold border-b border-slate-200/80 pb-1.5">
-                  <span className="text-[10px] tracking-wider uppercase font-bold">SPECIALIZATION</span>
-                  <span className="text-blue-700 font-semibold text-[11px]">Enterprise Ready</span>
-                </div>
-                <div className="flex items-center justify-between text-slate-700 text-[11px]">
-                  <span>Core Framework:</span>
-                  <strong className="text-slate-900 font-semibold">LangGraph & LangChain</strong>
-                </div>
-                <div className="flex items-center justify-between text-slate-700 text-[11px]">
-                  <span>Retrieval Engine:</span>
-                  <strong className="text-slate-900 font-semibold">FAISS / ChromaDB RAG</strong>
-                </div>
-                <div className="flex items-center justify-between text-slate-700 text-[11px]">
-                  <span>Enterprise Stack:</span>
-                  <strong className="text-slate-900 font-semibold">ServiceNow, FastAPI, Ansible</strong>
-                </div>
-                <div className="flex items-center justify-between text-slate-700 text-[11px]">
-                  <span>Academic Degree:</span>
-                  <strong className="text-slate-900 font-semibold">B.Tech IT (2020-2024)</strong>
-                </div>
-              </div>
-
-              {/* Recruiter Quick Link */}
-              <button
-                onClick={onOpenRecruiterDrawer}
-                className="btn-hover w-full mt-4 py-2 px-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm"
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Open Recruiter 30-Sec Dossier</span>
-              </button>
-
             </div>
 
-          </div>
+            {/* Headline statement below avatar */}
+            <div className="max-w-md mx-auto space-y-3 mt-3">
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight font-display">
+                Building Autonomous Agentic Graphs &amp; Production AI Systems
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Engineering deterministic multi-agent graphs, Pydantic structured output contracts, and enterprise API automations that bridge LLMs with real operations.
+              </p>
+
+              {/* Pill Tags row */}
+              <div className="flex flex-wrap items-center justify-center gap-1.5 pt-1">
+                {['Agentic AI', 'LangGraph', 'Enterprise RAG', 'ServiceNow CVA', 'Ansible AWX', 'ITSM Self-Healing'].map((tag) => (
+                  <span 
+                    key={tag}
+                    className="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700 border border-slate-200/80"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Primary Buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-2.5 pt-3">
+                <a
+                  href="#contact"
+                  className="px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-semibold shadow-xs hover:shadow transition-all active:scale-95 inline-flex items-center gap-1.5"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Get In Touch</span>
+                </a>
+
+                <button
+                  onClick={onOpenResumeModal}
+                  className="px-4 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-semibold transition-all active:scale-95 inline-flex items-center gap-1.5 cursor-pointer"
+                >
+                  <FileText className="w-3.5 h-3.5 text-slate-600" />
+                  <span>View Resume</span>
+                </button>
+
+                <button
+                  onClick={onOpenRecruiterDrawer}
+                  className="px-4 py-2.5 rounded-full bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs sm:text-sm font-semibold border border-indigo-200 transition-all active:scale-95 inline-flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+                  <span>30s Fast-Track</span>
+                </button>
+              </div>
+            </div>
+
+          </motion.div>
+
+          {/* Right Column: Valid Key Stats stacked vertically (3 cols) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:col-span-3 space-y-6 text-right order-3"
+          >
+            <div>
+              <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 block font-display">
+                2 Years
+              </span>
+              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                Enterprise Experience @ TCS
+              </span>
+            </div>
+
+            <div>
+              <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 block font-display text-emerald-600">
+                4 Systems
+              </span>
+              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                TCS Production Deployments
+              </span>
+            </div>
+
+            <div>
+              <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 block font-display text-violet-600">
+                45+
+              </span>
+              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                Ansible &amp; Agent Workflows
+              </span>
+            </div>
+
+            <div>
+              <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 block font-display text-blue-600">
+                60% Faster
+              </span>
+              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                Patching Cycles at Scale
+              </span>
+            </div>
+          </motion.div>
 
         </div>
+
       </div>
     </section>
   );

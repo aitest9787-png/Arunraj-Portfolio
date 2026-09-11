@@ -23,8 +23,10 @@ AI Automation Developer | Agentic AI & GenAI | Python Automation
 AI Automation Developer at TCS specializing in building agentic AI dashboards and virtual assistants, delivering solutions such as predictive, ML-driven ticket automation and multi-source asset dashboards integrated with natural-language SQL agents. Demonstrated expertise in Python/FastAPI agent development (including LangGraph, Gmail/Calendar/ServiceNow API integration, and RAG pipelines) as well as Linux/Ansible-based infrastructure automation.
 
 Work Experience
-AI Automation Developer (Jul 2025 - Present)
+AI Automation & DevOps Engineer (2 Years Experience • Jul 2024 - Present)
 Tata Consultancy Services (TCS) - Chennai, India
+• AWX Installation & Cluster Orchestration | Ansible, AWX, YAML, Linux: Automated full provisioning and configuration of AWX / Tower clusters using modular Ansible playbooks, managing RBAC, credentials, and centralized job execution templates.
+• Closed-Loop ITSM-to-Server Self-Healing | Python Middleware, ServiceNow ITSM, Ansible AWX: Engineered an end-to-end autonomous self-healing pipeline bridging ServiceNow with server infrastructure via a custom Python middleware that ingests ticket details, triggers Ansible remediation playbooks, and closes tickets post-verification.
 • Agentic AI Dashboard (POC) | Python, Random Forest, Isolation Forest, ServiceNow API: Developed proof of concept that collects server details, predicts issues using Random Forest and Isolation Forest models, and automatically creates ServiceNow tickets for predicted anomalies, significantly reducing manual triage effort.
 • Agentic Asset Management Dashboard | Python, SQL Agent, Multi-Source Data Integration: Aggregated asset details from multiple data sources into a central database, supported by a virtual assistant functioning as a natural-language SQL query agent.
 • AI CVA Agent for ServiceNow Ticketing | Python, FastAPI, LangGraph, Azure LLM: Engineered and deployed a FastAPI/LangGraph-based agent leveraging an Azure-hosted LLM to automate ServiceNow ticket creation from natural-language user prompts.
@@ -130,16 +132,22 @@ Certifications
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm">AI Automation Developer</h3>
+                  <h3 className="font-bold text-slate-900 text-sm">AI Automation &amp; DevOps Engineer</h3>
                   <div className="text-slate-700 font-semibold text-xs">Tata Consultancy Services (TCS)</div>
                 </div>
                 <div className="text-right text-xs text-slate-600 font-medium">
-                  <div>Jul 2025 – Present</div>
+                  <div>2 Years Experience • Jul 2024 – Present</div>
                   <div>Chennai, India</div>
                 </div>
               </div>
 
               <div className="space-y-2 pl-2">
+                <div className="text-xs text-slate-700">
+                  <strong className="text-slate-900 font-bold">• AWX Installation &amp; Cluster Orchestration | Ansible, AWX, YAML, Linux:</strong> Automated end-to-end installation, provisioning, and configuration of AWX / Tower clusters with Ansible playbooks, managing RBAC, credentials, and centralized job execution templates.
+                </div>
+                <div className="text-xs text-slate-700">
+                  <strong className="text-slate-900 font-bold">• Closed-Loop ITSM-to-Server Self-Healing | Python Middleware, ServiceNow ITSM, Ansible AWX:</strong> Engineered an autonomous self-healing pipeline bridging ServiceNow with server infrastructure via a custom Python middleware that ingests ticket details, triggers Ansible remediation playbooks via AWX REST APIs to resolve server issues autonomously, and closes tickets post-verification.
+                </div>
                 <div className="text-xs text-slate-700">
                   <strong className="text-slate-900 font-bold">• Agentic AI Dashboard (POC) | Python, Random Forest, Isolation Forest, ServiceNow API:</strong> Developed an agentic AI dashboard proof of concept that collects server details, predicts issues using Random Forest and Isolation Forest models, and automatically creates ServiceNow tickets for predicted anomalies, significantly reducing manual triage effort.
                 </div>
